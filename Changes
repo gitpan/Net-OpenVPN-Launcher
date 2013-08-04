@@ -1,0 +1,34 @@
+Revision history for Net-OpenVPN-Launcher
+
+0.05    4/8/2013
+        -Renamed module from Net::OpenVPN::ProxyManager to Net::OpenVPN::Launcher
+        -Added Method::Signatures dependency and converted start, stop and restart methods
+        -Updated test file Launcher.t
+
+
+0.04    3/8/2013
+        -Fixed connect and disconnect methods to avoid zombie processes.
+        -Removed ProxyManager::HMA and ProxyManager::Config objects.
+        -Removed unnecessary methods _test_openvpn, create_config.
+        -Updated connect to use filepath to an openvpn config file.
+        -Converted from Moose to Moo.
+        -Changed to make maker from Module::Build.
+        -Removed Capture::Tiny dependency.
+
+0.031   24/2/2013
+        -Updated POD.
+
+0.03    23/2/2013
+        -Added DEMOLISH method to ensure the closing of child processes (e.g. openvpn connections) before object destruction. 
+        -Updated the connect method to check for an existing connection and disconnect from it if required. Updated dependency metadata. 
+
+0.02    16/2/2013
+        -Added a disconnect() method.
+        -Changed the connect/disconnect model to a forking approach to allow multiple connections to be established and dropped by a single Perl program.
+
+0.011   16/2/2013
+        -Added hyperlinks to documentation.
+        -Renamed BUILD.PL to Build.PL as per CPAN installation bug-fix.
+
+0.01    3/2/2013
+        -ProxyManager class with test_openvpn, create_config, connect methods. 
