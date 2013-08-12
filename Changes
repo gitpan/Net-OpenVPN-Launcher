@@ -1,5 +1,9 @@
 Revision history for Net-OpenVPN-Launcher
 
+0.06    11/8/2013
+        -Added "can_run" check to check that openvpn is installed
+        -Updated makefile dependencies
+
 0.05    4/8/2013
         -Renamed module from Net::OpenVPN::ProxyManager to Net::OpenVPN::Launcher
         -Added Method::Signatures dependency and converted start, stop and restart methods

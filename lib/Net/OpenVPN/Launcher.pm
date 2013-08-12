@@ -1,16 +1,17 @@
 package Net::OpenVPN::Launcher;
 use Moo;
 use Method::Signatures;
+use IPC::Cmd qw(can_run);
 use strict;
 use Carp qw/croak/;
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 =head1 NAME
 
@@ -77,6 +78,9 @@ method start ($config_filepath) {
       unless -e $config_filepath;
 
     $self->config($config_filepath);
+
+    # check openvpn is installed
+    croak "openvpn binary not found" unless can_run('openvpn'); 
 
     # stop existing process
     $self->stop if $self->openvpn_pid;
