@@ -1,13 +1,17 @@
 Revision history for Net-OpenVPN-Launcher
 
+0.07    13/8/2013
+        -Added use warnings.
+        -Changed from 'forking open' to fork and exec to fix pid issue.
+
 0.06    11/8/2013
-        -Added "can_run" check to check that openvpn is installed
-        -Updated makefile dependencies
+        -Added "can_run" check to check that openvpn is installed.
+        -Updated makefile dependencies.
 
 0.05    4/8/2013
-        -Renamed module from Net::OpenVPN::ProxyManager to Net::OpenVPN::Launcher
-        -Added Method::Signatures dependency and converted start, stop and restart methods
-        -Updated test file Launcher.t
+        -Renamed module from Net::OpenVPN::ProxyManager to Net::OpenVPN::Launcher.
+        -Added Method::Signatures dependency and converted start, stop and restart methods.
+        -Updated test file Launcher.t.
 
 
 0.04    3/8/2013

@@ -1,17 +1,18 @@
 package Net::OpenVPN::Launcher;
+use strict;
+use warnings;
 use Moo;
 use Method::Signatures;
 use IPC::Cmd qw(can_run);
-use strict;
 use Carp qw/croak/;
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =cut
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 =head1 NAME
 
@@ -86,8 +87,10 @@ method start ($config_filepath) {
     $self->stop if $self->openvpn_pid;
 
     # run openvpn in child process
-    my $pid = open my $fhOut, "| openvpn $config_filepath & ", or croak $!;
-    $pid++;
+    my $pid = fork(); 
+    unless ($pid) {    
+        exec ("openvpn $config_filepath") or croak $!;
+    }
     $self->openvpn_pid($pid);
     return 1;
 }
