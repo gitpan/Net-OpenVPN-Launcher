@@ -3,16 +3,17 @@ use strict;
 use warnings;
 use Moo;
 use Method::Signatures;
-use IPC::Cmd qw(can_run);
+use IPC::Cmd qw(can_run run_forked);
 use Carp qw/croak/;
+use sigtrap qw(die normal-signals);
 
 =head1 VERSION
 
-Version 0.07
+Version 0.08
 
 =cut
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 =head1 NAME
 
@@ -81,7 +82,8 @@ method start ($config_filepath) {
     $self->config($config_filepath);
 
     # check openvpn is installed
-    croak "openvpn binary not found" unless can_run('openvpn'); 
+    my $openvpn_path = can_run('openvpn');
+    croak "openvpn binary not found" unless $openvpn_path; 
 
     # stop existing process
     $self->stop if $self->openvpn_pid;
@@ -89,7 +91,7 @@ method start ($config_filepath) {
     # run openvpn in child process
     my $pid = fork(); 
     unless ($pid) {    
-        exec ("openvpn $config_filepath") or croak $!;
+        my $result = run_forked("$openvpn_path $config_filepath", { terminate_on_parent_sudden_death => 1});
     }
     $self->openvpn_pid($pid);
     return 1;
@@ -168,16 +170,6 @@ has openvpn_pid => (
 );
 
 1;
-
-=head1 TO DO
-
-=over
-
-=item *
-
-Update L<Net::OpenVPN::Launcher> to be Windows compatible.
-
-=back
 
 =head1 AUTHOR
 
