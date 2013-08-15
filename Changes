@@ -1,5 +1,8 @@
 Revision history for Net-OpenVPN-Launcher
 
+0.09    14/8/2013
+        - Changed IPC::Cmd run_forked as it was leaving zombie processes.
+
 0.08    14/8/2013
         - Changed exec to IPC::Cmd run_forked.
         - Updated POD in Launcher.pm.

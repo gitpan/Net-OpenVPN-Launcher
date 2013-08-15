@@ -3,17 +3,17 @@ use strict;
 use warnings;
 use Moo;
 use Method::Signatures;
-use IPC::Cmd qw(can_run run_forked);
+use IPC::Cmd qw(can_run);
 use Carp qw/croak/;
 use sigtrap qw(die normal-signals);
 
 =head1 VERSION
 
-Version 0.08
+Version 0.09
 
 =cut
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 =head1 NAME
 
@@ -91,7 +91,7 @@ method start ($config_filepath) {
     # run openvpn in child process
     my $pid = fork(); 
     unless ($pid) {    
-        my $result = run_forked("$openvpn_path $config_filepath", { terminate_on_parent_sudden_death => 1});
+        exec "$openvpn_path $config_filepath";
     }
     $self->openvpn_pid($pid);
     return 1;
