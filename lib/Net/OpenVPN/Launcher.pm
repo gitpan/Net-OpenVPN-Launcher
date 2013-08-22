@@ -9,11 +9,11 @@ use sigtrap qw(die normal-signals);
 
 =head1 VERSION
 
-Version 0.09
+Version 0.1
 
 =cut
 
-our $VERSION = '0.09';
+our $VERSION = '0.1';
 
 =head1 NAME
 
@@ -132,6 +132,7 @@ method stop {
     else {
         croak 'Error: no PID found for openvpn process';
     }
+    sleep(1);
     return 1;
 }
 

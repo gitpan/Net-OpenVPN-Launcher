@@ -1,4 +1,6 @@
 Revision history for Net-OpenVPN-Launcher
+0.1     21/8/2013
+        - Added skip block to Launcher.t.
 
 0.09    14/8/2013
         - Changed IPC::Cmd run_forked as it was leaving zombie processes.
