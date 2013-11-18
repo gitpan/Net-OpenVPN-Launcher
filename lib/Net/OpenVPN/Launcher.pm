@@ -9,11 +9,11 @@ use sigtrap qw(die normal-signals);
 
 =head1 VERSION
 
-Version 0.11
+Version 0.12
 
 =cut
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 =head1 NAME
 
@@ -174,7 +174,7 @@ has openvpn_pid => (
 
 =head1 AUTHOR
 
-David Farrell, C<< <davidnmfarrell at gmail.com> >>
+David Farrell, C<< <davidnmfarrell at gmail.com> >>, L<perltricks.com|http://perltricks.com>
 
 =head1 BUGS
 

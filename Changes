@@ -1,4 +1,8 @@
 Revision history for Net-OpenVPN-Launcher
+
+0.12    2013/11/17
+        - Updated POD.
+
 0.11    24/8/2013
         - Corrected SKIP block in t/Launcher.t.
 
